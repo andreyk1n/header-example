@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="burger-button-container">
+                <div class="burger-button">
+                    <div class="burger-button-item"></div>
+                    <div class="burger-button-item"></div>
+                    <div class="burger-button-item"></div>
+                </div>
+            </div>
+
+            <div class="logo-container">
+                <img src="./img/2ad49tzTcNOt5xPExlOLg7TU7tR.svg" alt="">
+            </div>
+
+            <div class="header-nav-container">
+                <a href="#">Main page</a>
+
+
+                <div class="dropdown">
+                    <button class="dropbtn">First</button>
+                    <div class="dropdown-content">
+                        <a href="#">Option 1</a>
+                        <a href="#">Option 2</a>
+                        <a href="#">Option 3</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Second</button>
+                    <div class="dropdown-content">
+                        <a  href="#">Option 1</a>
+                        <a  href="#">Option 2</a>
+                        <a  href="#">Option 3</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Third</button>
+                    <div class="dropdown-content">
+                        <a href="#">Option 1</a>
+                        <a href="#">Option 2</a>
+                        <a href="#">Option 3</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="open-all-contacts-menu">
+                <div class="visible-content">
+                    <div class="open-visible-btn"><img src="./img/angle-down-svgrepo-com.svg" alt=""></div>
+                    <div class="visible-open-all-header"></div>
+                </div>
+                <div class="hidden-content">
+                    <div>
+                        <p>+111 111 1211</p>
+                    </div>
+                    <div>
+                        <p>+222 222 222</p>
+                    </div>
+                    <div>
+                        <p>+333 333 333</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="burger-hidden-menu">
+            <div class="burger-hidden-menu-content">
+                <div class="hidden-col">
+                    <p class="hidden-title">first</p>
+                    <p class="hidden-text">item</p>
+                    <p class="hidden-text">item</p>
+                    <p class="hidden-text">item</p>
+                    <p class="hidden-text">item</p>
+                </div>
+                <div class="hidden-col">
+                    <p class="hidden-title">second</p>
+                    <p class="hidden-text">item</p>
+                    <p class="hidden-text">item</p>
+                    <p class="hidden-text">item</p>
+                    <p class="hidden-text">item</p>
+                </div>
+                <div class="hidden-col">
+                    <p class="hidden-title">third</p>
+                    <p class="hidden-text">item</p>
+                    <p class="hidden-text">item</p>
+                    <p class="hidden-text">item</p>
+                    <p class="hidden-text">item</p>
+                </div>
+                <div class="hidden-col">
+                    <p class="hidden-title">fourth</p>
+                    <p class="hidden-text">item</p>
+                    <p class="hidden-text">item</p>
+                    <p class="hidden-text">item</p>
+                    <p class="hidden-text">item</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const openBtn = document.querySelector('.open-visible-btn');
+        const hiddenContent = document.querySelector('.hidden-content');
+        const visibleHeader = document.querySelector('.visible-open-all-header');
+
+        // Display the default content
+        visibleHeader.innerHTML = hiddenContent.querySelector('div').innerHTML;
+
+        // Toggle the visibility of the hidden content on button click
+        openBtn.addEventListener('click', function () {
+            hiddenContent.style.display = (hiddenContent.style.display === 'none') ? 'block' : 'none';
+        });
+
+        // Handle item click events
+        hiddenContent.addEventListener('click', function (event) {
+            const targetItem = event.target;
+            if (targetItem.tagName === 'P') {
+                // Set the selected item as active
+                Array.from(hiddenContent.querySelectorAll('div')).forEach(item => {
+                    item.classList.remove('active');
+                });
+                targetItem.parentElement.classList.add('active');
+
+                // Update the visible header with the selected item's content
+                visibleHeader.innerHTML = '<p>' + targetItem.textContent + '</p>';
+
+                // Hide the menu
+                hiddenContent.style.display = 'none';
+            }
+        });
+
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+    const burgerButton = document.querySelector('.burger-button');
+    const burgerHiddenMenu = document.querySelector('.burger-hidden-menu');
+    burgerButton.addEventListener('click', function () {
+    burgerButton.classList.toggle('active');
+    burgerHiddenMenu.classList.toggle('active');
+
+    // Toggle the display class directly
+    if (burgerHiddenMenu.classList.contains('active')) {
+        burgerHiddenMenu.style.display = 'flex';
+    } else {
+        burgerHiddenMenu.style.display = 'none';
+    }
+});
+
+});
+
+
+
+
+</script> 
+<!-- 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const openBtn = document.querySelector('.open-visible-btn');
+    const hiddenContent = document.querySelector('.hidden-content');
+    const visibleHeader = document.querySelector('.visible-open-all-header');
+    const burgerButton = document.querySelector('.burger-button');
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    // Display the default content
+    visibleHeader.innerHTML = hiddenContent.querySelector('div').innerHTML;
+
+    // Toggle the visibility of the hidden content on button click
+    openBtn.addEventListener('click', function () {
+        hiddenContent.style.display = (hiddenContent.style.display === 'none') ? 'block' : 'none';
+    });
+
+    // Handle item click events
+    hiddenContent.addEventListener('click', function (event) {
+        const targetItem = event.target;
+        if (targetItem.tagName === 'P') {
+            // Set the selected item as active
+            Array.from(hiddenContent.querySelectorAll('div')).forEach(item => {
+                item.classList.remove('active');
+            });
+            targetItem.parentElement.classList.add('active');
+
+            // Update the visible header with the selected item's content
+            visibleHeader.innerHTML = '<p>' + targetItem.textContent + '</p>';
+
+            // Hide the menu
+            hiddenContent.style.display = 'none';
+        }
+    });
+
+    // Toggle the active class on burger button click
+    burgerButton.addEventListener('click', function () {
+        burgerButton.classList.toggle('active');
+
+        // Toggle the active class on all dropdowns
+        dropdowns.forEach(dropdown => {
+            dropdown.classList.toggle('active');
+        });
+
+        // Toggle the active class on open-all-contacts-menu
+        hiddenContent.classList.toggle('active');
+    });
+});
+
+</script> -->
+</html> 
+
+
+
+ 
